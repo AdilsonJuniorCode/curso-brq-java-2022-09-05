@@ -1,2 +1,12 @@
-package com.brq.ms01.repositories;public interface UsuarioRepository {
+package com.brq.ms01.repositories;
+
+import com.brq.ms01.models.UsuarioModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+// O primeiro argumeeento do JPA repository é a classe modelo para mapear uma tabela e a classe java
+// O segundo argumento é o tipo de dado da chave primária
+
+@Repository
+public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> {
 }

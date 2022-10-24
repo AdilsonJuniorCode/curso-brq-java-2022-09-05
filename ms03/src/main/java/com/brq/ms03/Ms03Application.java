@@ -1,17 +1,11 @@
-package com.brq.ms01;
+package com.brq.ms03;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.brq.ms01.models.UsuarioModel;
-import org.yaml.snakeyaml.util.ArrayUtils;
-
-import java.util.ArrayList;
-import java.util.Optional;
-
 
 @SpringBootApplication
-public class Ms01Application {
+public class Ms03Application {
 
 	public static void main(String[] args) {
 
@@ -29,7 +23,7 @@ public class Ms01Application {
 //		System.out.println(list.get(0));
 
 
-		SpringApplication.run(Ms01Application.class, args);
+		SpringApplication.run(Ms03Application.class, args);
 	}
 
 
