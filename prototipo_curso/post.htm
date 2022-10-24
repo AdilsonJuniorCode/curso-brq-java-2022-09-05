@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252"> 
+	<link title="style" type="text/css" rel="stylesheet" href="css/curso.css">
+	<script  src="https://code.jquery.com/jquery-3.6.1.js"
+				integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+				crossorigin="anonymous"></script>
+	
+	<title>POST - CURSO JAVA TESTER</title>
+
+<script>
+
+
+	
+
+
+
+
+
+    function submitform(){
+
+        alert("Enviando Json");
+//		action="http://localhost:8080/professor/" method="POST"
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST','http://localhost:8080/professor');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+		//alert ("j");
+        var j = {
+            "nome":"teste json",
+			"cpf":"999.999.999-99",
+			"salario": 1111000,
+			"telefone":"119999-9999"
+        };
+		
+	
+		
+		//alert(j);
+		
+		const a = JSON.stringify(j);
+		
+        xhr.send(a);
+		
+//		$.ajax({
+//		url : "http://localhost:8080/professor/",
+//		method : "POST",
+//		contentType : 'application/json',
+//		dataType : 'json',
+//		data : JSON.stringify(j)
+//		}).done(function(res) {
+//		  console.log(res)
+//		})
+		
+
+
+	}
+
+</script>
+
+</head>
+<body>
+		<div class="content">
+	        <div id="logo">
+				<table>
+					<tr>
+						<td align="center" width="230"><font color="000066" face="arial" size="2">POST</font></td>
+					</tr>
+				</table>
+	        </div>
+	        <div id="formulario">
+				<form name="form">
+				<table border="0" cellpadding="0" cellspacing="0" width="686">
+			      <tbody>
+			      	<tr>
+				      </tr>
+
+					  <tr>
+				        <td width="220"></td>
+				        <td align="left" width="230"><font color="000066" face="arial" size="2">Nome</font></td>
+				        <td style="height: 23px;" align="left" width="200">
+					        <input id="nome" name="nome" type="text">
+				        </td>
+				      </tr>
+					  <tr>
+				        <td width="220"></td>
+				        <td align="left" width="230"><font color="000066" face="arial" size="2">CPF</font></td>
+				        <td style="height: 23px;" align="left" width="200">
+					        <input id="cpf" name="cpf" type="text">
+				        </td>
+				      </tr>
+					  <tr>
+				        <td width="220"></td>
+				        <td align="left" width="230"><font color="000066" face="arial" size="2">SALARIO</font></td>
+				        <td style="height: 23px;" align="left" width="200">
+					        <input id="salario" name="salario" type="text">
+				        </td>
+				      </tr>
+					  <tr>
+				        <td width="220"></td>
+				        <td align="left" width="230"><font color="000066" face="arial" size="2">TELEFONE</font></td>
+				        <td style="height: 23px;" align="left" width="200">
+					        <input id="telefone" name="telefone" type="text">
+				        </td>
+				      </tr>
+					  <tr>
+						<td>
+							<br><br>
+						</td>
+					  </tr>
+				      <tr>
+				      	<td colspan="2" width="500"></td>
+				        <td colspan="3" align="left" width="200">
+				        	<a href="index.htm" class="btn-azul" title="voltar">Voltar</a></td>
+				      </tr>
+				      <tr>
+				      	<td colspan="2" width="500"></td>
+				        <td colspan="3" align="left" width="200">
+					        <input  class="btn-azul" type="button" id="submit" onclick="submitform()" >
+
+						</td>
+				      </tr>
+					  
+
+				    </tbody>
+					
+					
+	    		</table>   
+				</form>
+	        </div>
+		</div>
+
+</body>
+</html>

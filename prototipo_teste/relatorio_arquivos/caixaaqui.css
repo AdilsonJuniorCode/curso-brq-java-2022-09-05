@@ -1,0 +1,162 @@
+font,input, a, p, button,  select, td{
+	font-family: Arial;
+	font-size: 13px;
+	color: #444444;
+}
+input[type="text"], input[type="password"], select{ 
+	padding-left: 2px; 
+	border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-radius: 3px;
+    height: 20px;
+    font: 14px Arial;
+    height: 22px;
+    min-width: 90px;
+}
+div.content-login{
+	display: block;
+	width: 600px;
+	margin: 30px auto;
+}
+div.content-login > #logo-login{
+	display: inline;
+	width: 100%;
+	
+}
+div.content-login > #form-login{
+	display: block;
+}
+div.content-login > #form-login> table tbody tr td{
+	padding: 4px;
+}
+div.content-login > #form-login> table tbody tr td font{
+	font-size: 14px;
+	font-family: Arial;
+}
+div.content-login > #form-login> table tbody tr td input{
+    width: 100px;
+}
+div.content-login > #form-login> table tbody tr td a{
+	width: 80px;
+	text-decoration: none;
+}
+
+.btn-azul{
+	background: -moz-linear-gradient(center bottom , #1F4780, #355D96) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #355D96;
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 12px;
+    text-align: center;
+    text-decoration: none;
+}
+.btn-azul:HOVER{
+	background: linear-gradient(to bottom, #355d96, #1f4780);
+	background: -moz-linear-gradient(bottom, #355d96, #1f4780);
+}
+
+.btn-laranja{
+	background: -moz-linear-gradient(center bottom , #ec801c, #ff9816 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #ec801c;
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 12px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#menu-principal{
+	width: 210px;
+	margin: 32px auto 0px;
+	background: #F0F0F0;
+}
+#menu-principal td{
+	padding: 2.5px 5px;
+}
+#menu-principal td .btn-azul, #menu-principal td .btn-laranja{
+	height: 20px;
+    line-height: 20px;
+    text-align: left;
+    width: 200px;
+}
+
+.titRodape {
+    color: #0C469D;
+}
+#header{
+	margin: 32px auto;
+    width: 800px;
+    display: block;
+    overflow: hidden;
+}
+#header > div{
+	display: inline-block;
+	height: 75px;
+	margin-right: 8px;
+	line-height: 75px;
+	float: left;
+}
+#header > div.titulo-pagina{
+	color: #0C469D;
+    font-family: Arial;
+    font-size: 26px;
+    height: 75px;
+    line-height: 75px;
+    font-weight: bold;
+    margin-left: 32px;
+}
+
+.titaplicacoes{
+	color: #EC801C;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+}
+.titerro{
+	color: #FF0000; font-weight: bold; font-family: Arial; font-size: 18px;
+	text-align: left;
+}
+.tb-cinza, .tbForm{
+	background: none repeat scroll 0 0 #F0F0F0;
+   /*  border: 1px solid; */
+    padding: 0;
+    width: 100%;
+}
+.tbForm tr td, .tb-cinza tr td{
+	padding: 4px 2px 4px 8px;
+	height: 22px;
+    line-height: 22px;
+}
+.tbForm tr td{
+	padding: 2px 2px 2px 8px;
+	border: 1px solid #708090;
+}
+.tbForm tr th{
+	background: #1F4780;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 4px;
+}
+
+.tbReport tr td{
+	padding: 7px 2px;
+    text-align: center;
+    border-bottom: 1px solid #708090;
+}
+.tbReport tr th{
+	padding: 10px 4px;
+	BACKGROUND: #CCCCCC;
+	font : bolder 10 Arial;
+	border-bottom-style: solid;
+	border-bottom-width: 1;
+	text-align: center;
+}

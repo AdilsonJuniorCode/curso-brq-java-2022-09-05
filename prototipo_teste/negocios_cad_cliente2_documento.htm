@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br"><head>
+
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<link href="tela_arquivos/caixaaqui.css" rel="stylesheet" type="text/css" title="style">
+<title>Caixa Aqui - Cadastro de Cliente</title>
+
+<script type="text/javascript">
+//<![CDATA[
+
+//]]>
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+  <div id="header">
+	    <div class="logo-pequeno" style="width: 80px;">
+		    <img src="tela_arquivos/caixaaqui_pequeno.png" alt="Caixa Aqui" border="0" height="74" width="75">
+	    </div>
+	  	<div class="titulo-pagina" style="width: 600px; text-align: center;">
+		  Cadastro de Cliente
+	  </div>
+  </div>
+<c:set var="docBase" value="/caixaaqui-layout/contexts/">
+<table style="margin: auto;" border="0" cellpadding="0" cellspacing="0" width="700">
+  <tbody><tr>
+    <td align="center" valign="top" width="95">
+     <table>
+     	<tbody><tr>
+     		<td>
+				<br>
+				
+				<br>
+     			<br>
+      			<br>
+		      	<a href="menu.htm" style="margin-top: 32px;">
+			     	<img alt="Voltar" src="tela_arquivos/seta_voltar.png" border="0" height="45" width="38">
+			    </a>
+			    <a href="menu_negocios.htm" class="btn-azul" style="margin-top: 32px; width: 55px;">Menu</a>
+			    <a href="login.htm" class="btn-laranja" style=" margin-top: 8px; width: 55px;">Sair</a>
+				
+     		</td>
+     	</tr>
+     </tbody></table>
+    </td>
+    <td>
+      <table style="margin: 0 12px;" border="0" cellpadding="0" cellspacing="0" width="550">
+        <tbody><tr>
+          <td width="100%" >
+            <span class="titaplicacoes" >Informe os dados do cliente</span>
+            <br>
+            <br>
+     	
+            <table class="tbForm" cellpadding="0" cellspacing="0">
+            <tbody>
+				<tr>
+					<th colspan="4" border="1" border="1" >
+						Dados Cadastrais
+					</th>		
+				</tr>
+			</tbody>
+			<tr>
+				<td  align="left" width="90px">
+					CPF do Cliente:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<input type="text" maxlength="15" value="123.456.789-00"/>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Nome do Cliente (Completo - sem abreviações):
+				</td>
+				
+				<td  align="left" colspan="3">
+					<input type="text" value="Ana Beatriz Cardoso Dantas" size="45"/>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Declaração de Propósitos:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<input type="checkbox" checked>Movimentação de Conta de Depósito/Poupança</input><br/>
+					<input type="checkbox">Empréstimos/Financiamentos</input><br/>
+					Financiamento Habitacional <input type="radio" name="financiamento">Sim</input><input type="radio" name="financiamento">Não</input><br/>
+					<input type="checkbox">Investimentos</input><br/>
+					<input type="checkbox" checked>Cartão de Crédito</input><br/>
+					<input type="checkbox">Seguros/Previdência Privada/Capitalização/Consórcios</input><br/>
+					<input type="checkbox">Operações Internacionais/Câmbio</input><br/>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Nome do Cliente (Formato Reduzido):
+				</td>
+				
+				<td  align="left" colspan="3">
+					<input type="text" maxlength="15" value="Ana Beatriz Cardoso Dantas" size="45"/>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Data de Nascimento:
+				</td>
+				
+				<td  align="left">
+					<input type="text" maxlength="15" value="01/01/1971" size="10"/>
+				</td>
+				<td  align="left">
+					Sexo:
+				</td>
+				<td  align="left">
+					<select name="sexo" id="sexo">
+						<option value="M">Masculino</option>
+						<option value="F" selected>Feminino</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Nacionalidade:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select name="nacionalidade" id="nacionalidade">
+						<option selected>Brasileira</option>
+						<option>Brasileiro Naturalizado</option>
+						<option>Brasileiro Nascido no Exterior</option>
+						<option>Estrangeira</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Naturalidade:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select name="uf" id="uf">
+						<option value="">Selecione</option>
+						<option value="AC">AC</option>
+						<option value="AL">AL</option>
+						<option value="AM">AM</option>
+						<option value="AP">AP</option>
+						<option value="BA">BA</option>
+						<option value="CE">CE</option>
+						<option value="DF">DF</option>
+						<option value="ES">ES</option>
+						<option value="GO">GO</option>
+						<option value="MA">MA</option>
+						<option value="MG">MG</option>
+						<option value="MS">MS</option>
+						<option value="MT">MT</option>
+						<option value="PA">PA</option>
+						<option value="PB">PB</option>
+						<option value="PE">PE</option>
+						<option value="PI">PI</option>
+						<option value="PR">PR</option>
+						<option value="RJ">RJ</option>
+						<option value="RN">RN</option>
+						<option value="RS">RS</option>
+						<option value="RO">RO</option>
+						<option value="RR">RR</option>
+						<option value="SC">SC</option>
+						<option value="SE">SE</option>
+						<option value="SP" selected>SP</option>
+						<option value="TO">TO</option>
+					 </select>
+					 &nbsp;
+					<select name="cidade" id="cidade">
+						<option value="cidade">Adamantina</option>
+						<option value="cidade">Adolfo</option>
+						<option value="cidade">Aguaí</option>
+						<option value="cidade">Águas da Prata</option>
+						<option value="cidade">Águas de Lindóia</option>
+						<option value="cidade">Águas de Santa Bárbara</option>
+						<option value="cidade" selected>Águas de São Pedro</option>
+						<option value="cidade">Agudos</option>
+						<option value="cidade">Alambari</option>
+						<option value="cidade">Alfredo Marcondes</option>
+						<option value="cidade">Altair</option>
+						<option value="cidade">Altinópolis</option>
+						<option value="cidade">Alto Alegre</option>
+						<option value="cidade">Alumínio</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Nome do Pai:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<input type="text" value="Jose Cardoso Dantas" size="45"/>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Nome da Mãe:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<input type="text" value="Maria Cardoso Dantas" size="45"/>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Grau de Instrução:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select name="formacao" id="formacao">
+						<option>Até 4a série incompleta do Ensino Fundamental</option>
+						<option>Com 4a série completa do Ensino Fundamental</option>
+						<option>Da 5a a 8a série incompleta do Ensino Fundamental</option>
+						<option>Ensino Fundamental Completo</option>
+						<option>Ensino Médio Incompleto</option>
+						<option>Ensino Médio Completo</option>
+						<option selected>Superior Completo</option>
+						<option>Especialização/Pós Graduação</option>
+						<option>Mestrado</option>
+						<option>Doutorado</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					PIS/NIS:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<input type="text" />
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Tipo de Documento de Identificação:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select onchange="window.location=this.options[this.selectedIndex].value">
+						<option value=""></option>
+						<option selected value="negocios_cad_cliente2_documento.htm">Documento de Identificação</option>
+						<option value="negocios_cad_cliente2_ric.htm">RIC - Registro de Identidade Civil</option>
+						<option value="negocios_cad_cliente2_passaporte.htm">Passaporte</option>
+						<option value="negocios_cad_cliente2.htm">CNH - Carteira Nacional de Habilitação</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					SubTipo do Documento:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select>
+						<option selected></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Número da Identidade:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<input type="text" value=""/>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Orgão Emissor:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select>
+						<option></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					UF:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select>
+						<option>Selecione</option>
+						<option>AC</option>
+						<option>AL</option>
+						<option>AM</option>
+						<option>AP</option>
+						<option>BA</option>
+						<option>CE</option>
+						<option>DF</option>
+						<option>ES</option>
+						<option>GO</option>
+						<option>MA</option>
+						<option>MG</option>
+						<option>MS</option>
+						<option>MT</option>
+						<option>PA</option>
+						<option>PB</option>
+						<option>PE</option>
+						<option>PI</option>
+						<option>PR</option>
+						<option>RJ</option>
+						<option>RN</option>
+						<option>RS</option>
+						<option>RO</option>
+						<option>RR</option>
+						<option>SC</option>
+						<option>SE</option>
+						<option selected>SP</option>
+						<option>TO</option>
+					 </select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					UF:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select>
+						<option selected>Brasil</option>
+						<option>Brunei</option>
+						<option>Bulgária</option>
+						<option>Burquina Faso</option>
+						<option>Burúndi</option>
+						<option>Butão</option>
+						<option>Cabo Verde</option>
+						<option>Camarões</option>
+						<option>Camboja</option>
+						<option>Canadá</option>
+						<option>Catar</option>
+					 </select>
+				</td>
+			</tr>			
+			<tr>
+				<td  align="left">
+					Data de Emissão:
+				</td>
+				
+				<td  align="left">
+					<input type="text" value="" size="10"/>
+				</td>
+				<td>
+					Data Fim Validade:
+				</td>
+				<td>
+					<input type="text" value="" size="10"/>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Estado Civil:
+				</td>
+				<td  align="left" colspan="3">
+					<select>
+						<option selected>Solteiro (a)</option>
+						<option>Divorciado (a)</option>
+						<option>Separado (a) Judicialmente</option>
+						<option>Viúvo (a)</option>
+						<option>Casado (a) com comunhão total de bens</option>
+						<option>Casado (a) com separação de bens</option>
+						<option>Casado (a) com comunhão parcial de bens</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Tipo de Ocupação:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select>
+						<option>Formal</option>
+						<option>Informal</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left">
+					Ocupação:
+				</td>
+				
+				<td  align="left" colspan="3">
+					<select>
+						<option>Alfaiate</option>
+						<option>Arquiteto</option>
+						<option selected>Analista de Sistemas</option>
+						<option>Assistente Social</option>
+						<option>Auxiliar de Laboratorio</option>
+						<option>Biologo e Biomedico</option>
+						<option>Cantor e Compositor</option>
+						<option>Chefe Intermediario</option>
+					</select>
+				</td>
+			</tr>			
+			</table>
+			<br/>
+			<center>
+				<a href="negocios_cad_cliente3.htm" class="btn-azul">Consulta</a>
+			</center>
+			
+			</br></br>
+			
+    	  </td>
+  		</tr>
+	  </tbody></table>
+	</td>
+	<td align="center" valign="top" width="95">
+      <table>
+     	<tbody><tr>
+     		<td>
+			
+     		</td>
+     	</tr>
+     	</tbody></table>
+
+    </td>
+	
+  </tr>
+</tbody></table>
+<table style="margin: 16px auto;" border="0" cellpadding="0" cellspacing="0" width="500">
+<tbody><tr>
+
+    <td class="titRodape" align="left">Código do Convênio:</td>
+    <td align="left">000011592</td>
+    <td class="titRodape" align="right">Identificação do Operador:</td>
+    <td align="right">00001159</td>
+
+</tr>
+</tbody></table>
+
+
+
+
+
+</c:set></body></html>
