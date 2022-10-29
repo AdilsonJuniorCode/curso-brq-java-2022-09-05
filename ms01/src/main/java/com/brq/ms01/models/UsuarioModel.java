@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
+import java.util.List;
 
 //@Data em tempo de execucao gera getters, setter and metodo toString
 //@AllArgsConstructor gera construtores com parametros
@@ -36,6 +37,20 @@ public class UsuarioModel {
     @Column(name = "telefone_user")
     private String telefone;
 
+    // no mappedby guardamos a variavel JAVA que mapeia esta entidade (UsuarioModel)
+    @OneToMany(mappedBy = "usuario")
+    private List<FinanciamentoModel> financiamentos;
+
+    @OneToOne(mappedBy = "usuario")
+    private EnderecoModel endereco;
+
+    @ManyToMany
+    @JoinTable(
+            name = "usuario_consorcio",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "consorcio_id")
+    )
+    private List<ConsorcioModel> consorcios;
 
     public UsuarioDTO toDTO(){
         ModelMapper mapper = new ModelMapper();

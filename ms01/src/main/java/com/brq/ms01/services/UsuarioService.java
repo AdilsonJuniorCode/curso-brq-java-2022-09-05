@@ -3,6 +3,7 @@ package com.brq.ms01.services;
 import com.brq.ms01.dtos.UsuarioDTO;
 import com.brq.ms01.models.UsuarioModel;
 import com.brq.ms01.repositories.UsuarioRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 /*
  * A camada Service é responsável por armazenar as regras de negócio da aplicação
  * */
+@Slf4j
 @Service
 public class UsuarioService {
 
@@ -33,15 +35,14 @@ public class UsuarioService {
         // a repository vai executar : SELECT * FROM usuarios;
         List<UsuarioModel> list = usuRepository.findAll();
 
-        // como converter uma lista de model para lista dto
+        // COMO CONVERTER UMA LISTA DE MODEL PARA LISTA DE DTO?
 
         List<UsuarioDTO> listDTO = new ArrayList<>();
 
-        //Tipo da variavel
-        for (UsuarioModel balde: list) {
-            listDTO.add(balde.toDTO());
+        // Tipo da variável -
+        for (UsuarioModel balde : list) {
+            listDTO.add( balde.toDTO() );
         }
-
 
         return listDTO;
         //return usuarios;
@@ -61,11 +62,21 @@ public class UsuarioService {
 //        usuarioDTOtoModel.setTelefone(usuario.getTelefone());
 //        usuarioDTOtoModel.setEmail(usuario.getEmail());
 
-        // INSERT INTO usuarios (name_user, email_user ) VALUEs()....
-        UsuarioModel usuarioSalvo = usuRepository.save( usuario.toModel() );
-        // return  usuRepository.save( usuario );
-        // return "POST Usuários";
-        //return usuario;
+        UsuarioModel usuarioSalvo = null;
+
+        try{
+            // INSERT INTO usuarios (name_user, email_user ) VALUEs()....
+            usuarioSalvo = usuRepository.save( usuario.toModel() );
+            // return  usuRepository.save( usuario );
+            // return "POST Usuários";
+            //return usuario;
+            log.info(usuarioSalvo.toString());
+        }
+        catch (Exception exception){
+            log.error("Erro ao salvar o usuário: " + exception.getMessage());
+            //log.error("Erro ao salvar o usuário: ");
+        }
+
         return usuarioSalvo.toDTO();
     }
 
@@ -158,5 +169,35 @@ public class UsuarioService {
 //            } // if
 //        } // for
 //        return null;
+    }
+
+    public List<UsuarioDTO> fetchUsuariosByNome(String nomeBusca){
+
+        //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
+        List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
+
+        List<UsuarioDTO> listDTO = new ArrayList<>();
+
+        // Tipo da variável -
+        for (UsuarioModel balde : list) {
+            listDTO.add( balde.toDTO() );
+        }
+
+        return listDTO;
+    }
+
+    public List<UsuarioDTO> fetchUsuariosByNomeAndEmail(String nomeBusca, String emailBusca){
+
+        //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
+        List<UsuarioModel> list = usuRepository.findByNomeContainsAndEmailContains(nomeBusca, emailBusca);
+
+        List<UsuarioDTO> listDTO = new ArrayList<>();
+
+        // Tipo da variável -
+        for (UsuarioModel balde : list) {
+            listDTO.add( balde.toDTO() );
+        }
+
+        return listDTO;
     }
 }

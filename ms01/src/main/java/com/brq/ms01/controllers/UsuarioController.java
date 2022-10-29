@@ -1,13 +1,12 @@
 package com.brq.ms01.controllers;
 
 import com.brq.ms01.dtos.UsuarioDTO;
-import com.brq.ms01.models.UsuarioModel;
 import com.brq.ms01.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,7 +31,7 @@ public class UsuarioController {
      * o @GetMapping permite associoar o verbo GET com a rota /usuarios
      * */
     @GetMapping("usuarios")
-    public List<UsuarioDTO> getAllUsuarios(){
+    public ResponseEntity<List<UsuarioDTO>> getAllUsuarios(){
 
         // ISSO É VERDADEIRO?????
         /*
@@ -50,48 +49,76 @@ public class UsuarioController {
 //          MANIPULAR AQUI
 //        return usuarios;
 
-        return usuService.getAllUsuarios();
+        return ResponseEntity.ok().body(usuService.getAllUsuarios());
     }
 
     @PostMapping("usuarios")
-    public UsuarioDTO create(@Valid @RequestBody UsuarioDTO usuario){
+    public ResponseEntity<UsuarioDTO> create(@Valid @RequestBody UsuarioDTO usuario){
 //        UsuarioModel u = usuService.create(usuario);
 //        return u;
         // return usuService.create(usuario);
         var t = usuService.create(usuario);
 
-        return t;
+        return ResponseEntity.ok().body(t);
 
     } // create
 
     // /usuarios/1 -> o valor do id vai ser 1
 
     @PatchMapping("usuarios/{id}")
-    public UsuarioDTO update(@RequestBody UsuarioDTO usuarioBody,
+    public ResponseEntity<UsuarioDTO> update(@RequestBody UsuarioDTO usuarioBody,
                              @PathVariable int id ){
         //        UsuarioModel u = usuService.update(id, usuarioBody);
         //        return u;
-        return usuService.update(id, usuarioBody);
+
+        usuService.update(id, usuarioBody);
+
+        return ResponseEntity.ok().body(usuService.update(id, usuarioBody));
     } // update()
 
     @DeleteMapping("usuarios/{id}")
-    public String delete(@PathVariable int id){
+    public ResponseEntity<String> delete(@PathVariable int id){
 
 //        String response = usuService.delete(id);
 //        return response;
 
-        return usuService.delete(id);
+        return ResponseEntity.ok().body(usuService.delete(id));
     } // delete
 
     // busca por apenas um usuário (pelo id)
     @GetMapping("usuarios/{id}")
-    public UsuarioDTO getOne(@PathVariable int id){
+    public ResponseEntity<UsuarioDTO> getOne(@PathVariable int id){
 
 //        UsuarioModel u = usuService.getOne(id);
 //        return u;
 
-        return usuService.getOne(id);
+        return ResponseEntity.ok().body(usuService.getOne(id));
 
     } // getOne
+
+    // usuarios/nome/Fabrizio
+    @GetMapping("usuarios/nome/{nomeBusca}")
+    public ResponseEntity<List<UsuarioDTO>> fetchUsuariosByNome(@PathVariable String nomeBusca){
+        // TODO: Não esquecer do ResponseEntity
+        // TODO: fazer a busca usando o operador like
+
+        var list= usuService.fetchUsuariosByNome(nomeBusca);
+
+        return ResponseEntity.ok().body(list);
+    }
+
+    // usuarios/nome/Fabrizio
+    @GetMapping("usuarios/nome/{nomeBusca}/email/{emailBusca}")
+    public ResponseEntity<List<UsuarioDTO>> fetchUsuariosByNomeAndEmail(
+            @PathVariable String nomeBusca,
+            @PathVariable String emailBusca){
+        // TODO: Não esquecer do ResponseEntity
+        // TODO: fazer a busca usando o operador like
+
+        var list = usuService.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
+
+        return ResponseEntity.ok().body(list);
+
+    }
 
 } // UsuarioController
