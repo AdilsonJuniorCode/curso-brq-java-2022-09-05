@@ -1,0 +1,8 @@
+token do SONARCUBE
+cd68fa380143dcd7b2fb86a9163f319133997b0c
+
+comando SONARCUBE para executar código
+mvn sonar:sonar \
+  -Dsonar.projectKey=ms01 \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=cd68fa380143dcd7b2fb86a9163f319133997b0c

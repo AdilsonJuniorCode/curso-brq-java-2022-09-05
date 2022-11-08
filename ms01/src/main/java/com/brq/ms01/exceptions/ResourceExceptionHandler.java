@@ -76,4 +76,20 @@ public class ResourceExceptionHandler {
 
     }
 
+    @ExceptionHandler(DataCreateException.class)
+    public ResponseEntity<StandardError> dataCreateExceptionHandler(DataCreateException exception, HttpServletRequest request){
+
+        StandardError standardError = new StandardError();
+        standardError.setTimestamp(new Date());
+        standardError.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        standardError.setError("Erro ao inserir o registro");
+        standardError.setMessage(exception.getMessage());
+        standardError.setPath(request.getRequestURI());
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(standardError);
+
+    }
+
+
+
 }

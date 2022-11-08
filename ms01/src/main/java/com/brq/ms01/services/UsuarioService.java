@@ -1,6 +1,7 @@
 package com.brq.ms01.services;
 
 import com.brq.ms01.dtos.UsuarioDTO;
+import com.brq.ms01.exceptions.DataCreateException;
 import com.brq.ms01.models.UsuarioModel;
 import com.brq.ms01.repositories.UsuarioRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -9,25 +10,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 
 /*
  * A camada Service é responsável por armazenar as regras de negócio da aplicação
  * */
 @Slf4j
 @Service
-public class UsuarioService {
+public class UsuarioService implements IUsuarioService{
 
-    // ESTE ARRAYLIST É DIDÁTICO, POIS ESTÁ SIMULANDO UM BANCO DE DADOS
-    private ArrayList<UsuarioModel> usuarios = new ArrayList<>();
-    private int counter = 1;
+
 
     @Autowired
     private UsuarioRepository usuRepository;
 
     public void mostrarMensagemService(){
-        System.out.println("Mensagem do serviço");
+
+        log.info("Mensagem do serviço");
     }
 
     public List<UsuarioDTO> getAllUsuarios(){
@@ -42,10 +40,34 @@ public class UsuarioService {
         // Tipo da variável -
         for (UsuarioModel balde : list) {
             listDTO.add( balde.toDTO() );
+//            UsuarioDTO dto = UsuarioDTO
+//                    .builder()
+//                    .id(balde.getId())
+//                    .email(balde.getEmail())
+//                    .nome(balde.getNome())
+//                    .endereco( balde.getEndereco() == null ? null : balde.getEndereco().toDTO())
+//                    .consorcios( balde.getConsorcios().isEmpty() ? null : balde.getConsorcios().stream().map( x -> x.toDTO() ).collect(Collectors.toList()))
+//                    .build();
+//
+//            listDTO.add( dto );
         }
 
         return listDTO;
         //return usuarios;
+    }
+
+    public List<UsuarioDTO> getAllUsuarios2(){
+
+        List<UsuarioModel> list = usuRepository.findAll();
+
+        List<UsuarioDTO> listDTO = new ArrayList<>();
+
+        for (UsuarioModel balde : list) {
+            balde.setId( 2 * balde.getId() );
+            balde.setNome( balde.getNome() + "JAVA" );
+            listDTO.add( balde.toDTO() );
+        }
+        return listDTO;
     }
 
     public UsuarioDTO create(UsuarioDTO usuario){
@@ -71,17 +93,27 @@ public class UsuarioService {
             // return "POST Usuários";
             //return usuario;
             log.info(usuarioSalvo.toString());
+
+            //caminho feliz
+            return usuarioSalvo.toDTO();
         }
         catch (Exception exception){
             log.error("Erro ao salvar o usuário: " + exception.getMessage());
             //log.error("Erro ao salvar o usuário: ");
+            //throw new RuntimeException("Erro ao salvar no banco de dados");
+            throw new DataCreateException("Erro ao salvar usuário");
         }
+        /* O famoso NULLPOIIIINTERRRREXCEPPTIIIONN (NullPointException)
+         * quando tentamos executar um método de uma variável nula,
+         * acontece a exceção NullPointException
+         * */
+        //return null;
 
-        return usuarioSalvo.toDTO();
     }
 
     public UsuarioDTO update(int id, UsuarioDTO usuarioBody)  {
 
+        // TODO: fazer uma exceção para quando não encontrar o dado. Sugestão: ObjNotFountException. Retornar status 404
         UsuarioModel usuario = usuRepository.findById(id)
                 .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
 
@@ -141,6 +173,13 @@ public class UsuarioService {
 //        } // for
 //        return "Usuário não encontrado";
 
+        final var usuario = usuRepository.findById(id)
+                .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
+
+
+        log.info("deletando usuário id: {} com sucesso, email : {}",
+                usuario.getId(), usuario.getEmail() );
+
         usuRepository.deleteById(id);
         return "Usuário delatado com sucesso!";
     }
@@ -173,8 +212,16 @@ public class UsuarioService {
 
     public List<UsuarioDTO> fetchUsuariosByNome(String nomeBusca){
 
+        // pesquisa pelo findBy
         //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
-        List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
+        //List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
+
+        // usando JPQL
+        // List<UsuarioModel> list = usuRepository.fetchByNomeLike(nomeBusca);
+
+        // usando Native Query
+        List<UsuarioModel> list = usuRepository.fetchByNomeLikeNativeQuery(nomeBusca);
+
 
         List<UsuarioDTO> listDTO = new ArrayList<>();
 
@@ -191,6 +238,25 @@ public class UsuarioService {
         //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
         List<UsuarioModel> list = usuRepository.findByNomeContainsAndEmailContains(nomeBusca, emailBusca);
 
+
+        List<UsuarioDTO> listDTO = new ArrayList<>();
+
+        // Tipo da variável -
+        for (UsuarioModel balde : list) {
+            listDTO.add( balde.toDTO() );
+        }
+
+        return listDTO;
+    }
+
+    public List<UsuarioDTO> fetchUsuariosByNomeAndEmailAndEndereco(String nomeBusca, String emailBusca, String ruaBusca){
+
+        //List<UsuarioModel> list = usuRepository.findByNome(nomeBusca);
+        //List<UsuarioModel> list = usuRepository.findByNomeContains(nomeBusca);
+        // Usando JPQL
+        //List<UsuarioModel> list = usuRepository.fetchByNomeLike(nomeBusca);
+        // usando Native Query
+        List<UsuarioModel> list = usuRepository.findByNomeContainsAndEmailContainsAndEnderecoRuaContains(nomeBusca, emailBusca, ruaBusca);
         List<UsuarioDTO> listDTO = new ArrayList<>();
 
         // Tipo da variável -
