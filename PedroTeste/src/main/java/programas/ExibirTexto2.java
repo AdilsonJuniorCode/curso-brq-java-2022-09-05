@@ -1,6 +1,6 @@
 package programas;
 
-public class ExibirTexto {
+public class ExibirTexto2 {
 
     public static void main(String[] args) {
 
