@@ -25,7 +25,7 @@ public class UsuarioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name="id")
+    @Column (name="id_user")
     private int id;
 
     @Column (name="nome_user")
