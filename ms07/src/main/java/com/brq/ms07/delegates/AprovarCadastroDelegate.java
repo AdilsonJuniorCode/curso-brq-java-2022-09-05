@@ -8,12 +8,13 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Named("receberMercadoria")
-public class ReceberMercadoriaDelegate 
+@Named("aprovarCadastro")
+public class AprovarCadastroDelegate
 	implements JavaDelegate {
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
-		log.info("Vou printar isso aqui no console {}", execution.getId());
+		log.info("Aprovar Cadastro....");
 	}
+
 }
