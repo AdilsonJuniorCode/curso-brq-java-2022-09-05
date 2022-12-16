@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /*
- * O primeiro argumento do JpaRepository é a classe modelo para mapear uma tabela
- * e a classe Java
- *
- * O segundo argumento é o tipo de dado da chave primária
- * */
+* O primeiro argumento do JpaRepository é a classe modelo para mapear uma tabela
+* e a classe Java
+*
+* O segundo argumento é o tipo de dado da chave primária
+* */
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> {
 

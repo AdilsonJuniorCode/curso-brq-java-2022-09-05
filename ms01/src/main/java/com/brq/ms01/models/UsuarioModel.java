@@ -9,42 +9,41 @@ import org.modelmapper.ModelMapper;
 import javax.persistence.*;
 import java.util.List;
 
-//@Data em tempo de execucao gera getters, setter and metodo toString
-//@AllArgsConstructor gera construtores com parametros
-//@AllArgsConstructor gera construtores sem parametros
-// @Entity diz que a classe vai se mapeada com alguma tabela no banco de dados
-//@Table especifica o nome da tabela que a classe irá mapear
-
+/*
+* @Data, que faz o papel dos Getters, Setters e toString()
+* @Entity "diz" que a classe UsuarioModel vai ser mapeada com uma tabela no banco de dados
+* @Table especifica o nome da tabela que esta classe vai mapear
+* */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table (name="usuarios")
-
+@Table(name = "usuarios")
 public class UsuarioModel {
 
+    // UUID -> é um conjunto de letras e números para identificar unicamente um registro
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name="id_user")
+    @Column(name = "id_user")
     private int id;
 
-    @Column (name="nome_user")
+    @Column(name = "nome_user")
     private String nome;
 
-    @Column (name="email_user")
+    @Column(name = "email_user")
     private String email;
 
     @Column(name = "telefone_user")
     private String telefone;
 
-    // no mappedby guardamos a variavel JAVA que mapeia esta entidade (UsuarioModel)
+    // no mappedBy guardamos a variável JAVA que mapeia esta entidade (UsuarioModel)
     @OneToMany(mappedBy = "usuario")
     private List<FinanciamentoModel> financiamentos;
 
     @OneToOne(mappedBy = "usuario")
     private EnderecoModel endereco;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "usuario_consorcio",
             joinColumns = @JoinColumn(name = "usuario_id"),
@@ -57,6 +56,4 @@ public class UsuarioModel {
 
         return mapper.map(this, UsuarioDTO.class);
     }
-
-
 }

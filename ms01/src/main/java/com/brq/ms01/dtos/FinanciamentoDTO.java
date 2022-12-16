@@ -8,11 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class FinanciamentoDTO {
 
     private Integer id;
     private Integer numeroContrato;
     private Double valor;
-
 }

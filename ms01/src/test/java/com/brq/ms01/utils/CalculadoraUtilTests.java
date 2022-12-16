@@ -7,8 +7,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
-* @ExtendedWith é uma anotação para permitir a execução e registro de testes unitarios
-*  SpringExtension.class permite a integração do Spring boot com o junit
+* @ExtendWith é uma anotação para permitir a execução e registro de testes unitários
+* SpringExtension.class permite a integração do Spring Boot com o Junit 5
 * */
 
 @ExtendWith(SpringExtension.class)
@@ -18,12 +18,10 @@ public class CalculadoraUtilTests {
 
     @Test
     void somarTest(){
-    int resultadoAtual = calculadoraUtil.somar(7,15);
+        int resultadoAtual = calculadoraUtil.somar(7,15);
 
-    int resultadoEsperado = 22;
+        int resultadoEsperado = 22;
 
         assertEquals(resultadoEsperado, resultadoAtual);
-
     }
-
 }

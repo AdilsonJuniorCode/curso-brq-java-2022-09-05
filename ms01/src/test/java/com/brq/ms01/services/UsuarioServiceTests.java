@@ -24,9 +24,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 /*
- * @SpringBootTest: fornece um jeito de iniciar o Spring Boot
- * para utilizar os testes unitários
- * */
+* @SpringBootTest: fornece um jeito de iniciar o Spring Boot
+* para utilizar os testes unitários
+* */
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -195,7 +195,7 @@ public class UsuarioServiceTests {
         body.setTelefone("telefone");
 
         /* quando o findById for chamado, retornaremos
-         * um optional vazio*/
+        * um optional vazio*/
         when( usuarioRepository.findById(id) )
                 .thenReturn(optional);
 
@@ -392,7 +392,7 @@ public class UsuarioServiceTests {
         assertThat( dtos.get(0).getNome() )
                 .isEqualTo(listUsuariosMockados.get(0).getNome());
 
-        assertThat( dtos.isEmpty() ).isFalse();
+        assertThat( dtos.isEmpty() ).isEqualTo(false);
 
     }
 

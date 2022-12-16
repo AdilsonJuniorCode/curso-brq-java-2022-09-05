@@ -12,19 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * A camada Service é responsável por armazenar as regras de negócio da aplicação
- * */
+* A camada Service é responsável por armazenar as regras de negócio da aplicação
+* */
 @Slf4j
 @Service
-public class UsuarioService implements IUsuarioService{
+public class UsuarioService implements IUsuarioService {
 
-
+    // ESTE ARRAYLIST É DIDÁTICO, POIS ESTÁ SIMULANDO UM BANCO DE DADOS
+//    private ArrayList<UsuarioModel> usuarios = new ArrayList<>();
+//    private int counter = 1;
 
     @Autowired
     private UsuarioRepository usuRepository;
 
     public void mostrarMensagemService(){
-
+        //System.out.println("Mensagem do serviço");
         log.info("Mensagem do serviço");
     }
 
@@ -104,9 +106,9 @@ public class UsuarioService implements IUsuarioService{
             throw new DataCreateException("Erro ao salvar usuário");
         }
         /* O famoso NULLPOIIIINTERRRREXCEPPTIIIONN (NullPointException)
-         * quando tentamos executar um método de uma variável nula,
-         * acontece a exceção NullPointException
-         * */
+        * quando tentamos executar um método de uma variável nula,
+        * acontece a exceção NullPointException
+        * */
         //return null;
 
     }
@@ -176,9 +178,10 @@ public class UsuarioService implements IUsuarioService{
         final var usuario = usuRepository.findById(id)
                 .orElseThrow( () -> new RuntimeException("Usuário não localizado") );
 
+        //log.info("deletando usuário id: " + usuario.getId() + " com sucesso, email " + usuario.getEmail()  );
 
         log.info("deletando usuário id: {} com sucesso, email : {}",
-                usuario.getId(), usuario.getEmail() );
+                    usuario.getId(), usuario.getEmail() );
 
         usuRepository.deleteById(id);
         return "Usuário delatado com sucesso!";
@@ -187,7 +190,7 @@ public class UsuarioService implements IUsuarioService{
     public UsuarioDTO getOne(int id){
 
         UsuarioModel usuario = usuRepository.findById(id)
-                .orElseThrow( () -> new RuntimeException("Usuário não localizado"));
+                    .orElseThrow( () -> new RuntimeException("Usuário não localizado"));
 
         return usuario.toDTO();
 //        Optional<UsuarioModel> usuarioOptional = usuRepository.findById(id);

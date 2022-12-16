@@ -2,7 +2,6 @@ package com.brq.ms01.controllers;
 
 import com.brq.ms01.dtos.UsuarioDTO;
 import com.brq.ms01.services.IUsuarioService;
-import com.brq.ms01.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +19,6 @@ import java.util.List;
 @RestController
 public class UsuarioController {
 
-
-
     // private UsuarioService usuService = new UsuarioService();
     // @Autowired é importante pois permite que o Spring "instancie" o objeto do tipo UsuarioService
     @Autowired
@@ -29,38 +26,44 @@ public class UsuarioController {
     private IUsuarioService usuService;
 
     /*
-     * o @GetMapping permite associoar o verbo GET com a rota /usuarios
-     * */
+    * o @GetMapping permite associoar o verbo GET com a rota /usuarios
+    * */
     @GetMapping("usuarios")
     public ResponseEntity<List<UsuarioDTO>> getAllUsuarios(){
 
-        // ISSO É VERDADEIRO?????
-        /*
-         * EM JAVA, NÃÃÃÃÃÃÃOOOO SE COMPARA STRING COM OPERADOR ==
-         * */
-//        if ("aaa" == "aaa"){
-//
-//        }
-//        if ("aaa".equalsIgnoreCase("aaa")){
-//
-//        }
-        usuService.mostrarMensagemService();
-        //return usuarios;
-//        ArrayList<UsuarioModel> usuarios = usuService.getAllUsuarios();
-//          MANIPULAR AQUI
-//        return usuarios;
+        // usuService.mostrarMensagemService();
 
-        return ResponseEntity.ok().body(usuService.getAllUsuarios());
+        var usuarios = usuService.getAllUsuarios();
+
+        return ResponseEntity.ok().body(usuarios);
+    }
+
+    @GetMapping("v1/usuarios")
+    public ResponseEntity<List<UsuarioDTO>> getAllUsuariosV2(){
+
+        // usuService.mostrarMensagemService();
+
+        var usuarios = usuService.getAllUsuarios();
+
+        return ResponseEntity.ok().body(usuarios);
+    }
+
+    @GetMapping("v2/usuarios")
+    public ResponseEntity<List<UsuarioDTO>> getAllUsuariosV3(){
+
+        // usuService.mostrarMensagemService();
+
+        var usuarios = usuService.getAllUsuarios();
+
+        return ResponseEntity.ok().body(usuarios);
     }
 
     @PostMapping("usuarios")
     public ResponseEntity<UsuarioDTO> create(@Valid @RequestBody UsuarioDTO usuario){
-//        UsuarioModel u = usuService.create(usuario);
-//        return u;
-        // return usuService.create(usuario);
-        var t = usuService.create(usuario);
 
-        return ResponseEntity.ok().body(t);
+        var usuarioResponse = usuService.create(usuario);
+
+        return ResponseEntity.ok().body(usuarioResponse);
 
     } // create
 
@@ -68,30 +71,25 @@ public class UsuarioController {
 
     @PatchMapping("usuarios/{id}")
     public ResponseEntity<UsuarioDTO> update(@RequestBody UsuarioDTO usuarioBody,
-                             @PathVariable int id ){
-        //        UsuarioModel u = usuService.update(id, usuarioBody);
-        //        return u;
+                                @PathVariable int id ){
 
-        return ResponseEntity.ok().body(usuService.update(id, usuarioBody));
+        var tiberio = usuService.update(id, usuarioBody);
+        return ResponseEntity.ok().body(tiberio);
     } // update()
 
     @DeleteMapping("usuarios/{id}")
     public ResponseEntity<String> delete(@PathVariable int id){
 
-//        String response = usuService.delete(id);
-//        return response;
-
-        return ResponseEntity.ok().body(usuService.delete(id));
+        var resp = usuService.delete(id);
+        return ResponseEntity.ok().body(resp);
     } // delete
 
     // busca por apenas um usuário (pelo id)
     @GetMapping("usuarios/{id}")
     public ResponseEntity<UsuarioDTO> getOne(@PathVariable int id){
 
-//        UsuarioModel u = usuService.getOne(id);
-//        return u;
-
-        return ResponseEntity.ok().body(usuService.getOne(id));
+        var u = usuService.getOne(id);
+        return ResponseEntity.ok().body(u);
 
     } // getOne
 
@@ -100,10 +98,10 @@ public class UsuarioController {
     public ResponseEntity<List<UsuarioDTO>> fetchUsuariosByNome(@PathVariable String nomeBusca){
         // TODO: Não esquecer do ResponseEntity
         // TODO: fazer a busca usando o operador like
-
-        var list= usuService.fetchUsuariosByNome(nomeBusca);
-
+        var list = usuService.fetchUsuariosByNome(nomeBusca);
         return ResponseEntity.ok().body(list);
+
+       // return ResponseEntity.ok().body(usuService.fetchUsuariosByNome(nomeBusca));
     }
 
     // usuarios/nome/Fabrizio
@@ -114,10 +112,12 @@ public class UsuarioController {
         // TODO: Não esquecer do ResponseEntity
         // TODO: fazer a busca usando o operador like
 
+        // var nome = "Fabrizio";
+
+        // List<UsuarioDTO> list = usuService.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
         var list = usuService.fetchUsuariosByNomeAndEmail(nomeBusca, emailBusca);
 
         return ResponseEntity.ok().body(list);
-
     }
 
 } // UsuarioController

@@ -33,3 +33,6 @@ build/
 .vscode/
 
 testdb.mv.db
+testdb.trace.db
+input/
+output/

@@ -1,6 +1,7 @@
 package com.brq.ms01.controllers;
 
 import com.brq.ms01.models.UsuarioModel;
+import com.brq.ms01.services.ProfessorService;
 import com.brq.ms01.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,21 +22,24 @@ public class UsuarioController {
     private ArrayList<UsuarioModel> usuarios = new ArrayList<>();
     private int counter = 1;
 
+    // private UsuarioService usuServ = new UsuarioService();
     @Autowired
     private UsuarioService usuServ;
 
-
+    @Autowired
+    private ProfessorService profServ;
     /*
-     * o @GetMapping permite associoar o verbo GET com a rota /usuarios
-     * */
+    * o @GetMapping permite associoar o verbo GET com a rota /usuarios
+    * */
     @GetMapping("usuarios")
     public ArrayList<UsuarioModel> getAllUsuarios(){
 
-        UsuarioModel u = new UsuarioModel();
-        u.setId(1);
-        u.setNome("Manoel");
-        u.setEmail("manoel@gmail.com");
-        usuarios.add(u);
+//        UsuarioModel u = new UsuarioModel();
+//        u.setId(1);
+//        u.setNome("Manoel");
+//        u.setEmail("manoel@gmail.com");
+//
+//        usuarios.add(u);
 
         return usuarios;
     }
@@ -43,7 +47,9 @@ public class UsuarioController {
     @PostMapping("usuarios")
     public UsuarioModel create(@RequestBody UsuarioModel usuario){
 
-        System.out.println(usuario);
+        // System.out.println(usuario);
+
+        usuServ.teste();
 
         usuario.setId( counter );
         usuarios.add(usuario);
@@ -51,7 +57,7 @@ public class UsuarioController {
 
         System.out.println(usuario);
 
-         //return "POST Usuários";
+        // return "POST Usuários";
         return usuario;
     } // create
 
@@ -59,7 +65,7 @@ public class UsuarioController {
 
     @PatchMapping("usuarios/{id}")
     public UsuarioModel update(@RequestBody UsuarioModel usuarioBody,
-                               @PathVariable int id ){
+                                @PathVariable int id ){
         // como achar o usuário a ser alterado?
         for ( int i = 0; i <  usuarios.size(); i++ ){
             if (usuarios.get(i).getId() == id){
@@ -81,13 +87,13 @@ public class UsuarioController {
 //        for (UsuarioModel usuarioLocal: usuarios) {
 //            usuarios.remove(usuarioLocal);
 //        }
-        for (int i = 0; i < usuarios.size(); i++){
-            // se achar o usuário, então delete do arraylist
+         for (int i = 0; i < usuarios.size(); i++){
+             // se achar o usuário, então delete do arraylist
             if (usuarios.get(i).getId() == id){
                 usuarios.remove(i);
                 return "Usuário delatado com sucesso!";
             } // if
-        } // for
+         } // for
         return "Usuário não encontrado";
     } // delete
 
@@ -101,6 +107,6 @@ public class UsuarioController {
             } // if
         } // for
         return null;
-    }
+    } // getOne
 
 } // UsuarioController

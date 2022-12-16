@@ -1,9 +1,9 @@
 // Primeira Modificação
 
-// Segunda Modificação
+// segunda Modificação
 
-// Alteração na interface Web
+// alteração pela interface web
 
-// Alteração na interface Web 2
-
-// Alteração na branch main
+GIT FLOW: 
+1-) sempre deixar o código de produção na branch master
+2-) sempre  criar uma branch a partir da "branch de desenvolvimento"

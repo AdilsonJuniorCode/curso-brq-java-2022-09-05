@@ -8,12 +8,10 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ValidationError extends StandardError{
 
     private List<FieldMessage> errors = new ArrayList<>();
-
 }

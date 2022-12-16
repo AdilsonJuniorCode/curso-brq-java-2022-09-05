@@ -9,11 +9,9 @@ public class CopyFilesRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        //a rora é do tipo arquivo e parte da pasta input
+        // a rota é do tipo arquivo e parte da pasta input
         from("file:input")
-            // a rota é do tipo arquivo e tem como destino a pasta output
-            .to("file:output");
-
-
+                // a rota é do tipo arquivo e tem como destino a pasta output
+                .to("file:output");
     }
 }

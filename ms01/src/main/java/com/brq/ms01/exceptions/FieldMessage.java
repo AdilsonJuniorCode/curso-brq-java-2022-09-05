@@ -11,5 +11,4 @@ public class FieldMessage {
 
     private String field;
     private String message;
-
 }
